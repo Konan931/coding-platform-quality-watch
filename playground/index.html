@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Quality Watch Playground</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header>
+      <p class="eyebrow">DWP™ // portable runtime probe</p>
+      <h1>Quality Watch Playground</h1>
+      <p>HTTP when available. Embedded fallback when the sandbox says no.</p>
+    </header>
+
+    <section class="panel">
+      <h2>Runtime</h2>
+      <dl id="runtime" class="runtime"></dl>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <h2>Findings</h2>
+        <input id="filter" type="search" placeholder="filter reports">
+      </div>
+      <div id="findings" class="findings" aria-live="polite"></div>
+    </section>
+
+    <footer>
+      <a href="./standalone.html">Open standalone fallback build</a>
+    </footer>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
