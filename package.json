@@ -7,7 +7,8 @@
   "scripts": {
     "validate": "node scripts/validate-reports.mjs",
     "test": "npm run validate",
-    "serve": "python3 -m http.server 8080 -d web"
+    "build": "node scripts/build-web.mjs",
+    "serve": "npm run build && python3 -m http.server 8080 -d dist"
   },
   "engines": {
     "node": ">=20"
