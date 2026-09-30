@@ -1,0 +1,65 @@
+name: Quality finding
+description: Report a reproducible issue or a strong quality pattern.
+title: "[Finding]: "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for contributing. Please separate observation from interpretation and do not include credentials or private learner data.
+
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      placeholder: SoloLearn, Mimo, Boot.dev, ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - content
+        - pedagogy
+        - autograder
+        - runtime
+        - sandbox
+        - ux
+        - accessibility
+        - security
+        - privacy
+        - reliability
+        - compatibility
+        - positive-pattern
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Observed behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      description: Include runtime, browser, device, locale, or other relevant environmental details.
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Links or descriptions only. Redact secrets, tokens, cookies, and private user information.
