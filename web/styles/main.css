@@ -1,0 +1,103 @@
+:root {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color-scheme: dark;
+  background: #0b0d0f;
+  color: #e8eaed;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255,255,255,.07), transparent 28rem),
+    #0b0d0f;
+}
+
+.shell {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 6rem 0;
+}
+
+.hero { max-width: 850px; margin-bottom: 4rem; }
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  line-height: .92;
+  letter-spacing: -.07em;
+  margin: .35rem 0 1.5rem;
+}
+
+h2 { margin: .25rem 0; letter-spacing: -.035em; }
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  font-size: .75rem;
+  opacity: .62;
+}
+
+.lede { font-size: 1.25rem; }
+.mission { opacity: .7; }
+
+.panel {
+  border-top: 1px solid #33383e;
+  padding: 2rem 0 3rem;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.metrics div {
+  border: 1px solid #2b3036;
+  padding: 1rem;
+}
+
+dt { opacity: .6; font-size: .75rem; text-transform: uppercase; }
+dd { margin: .35rem 0 0; font-size: 1.7rem; }
+
+.toolbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+label { display: grid; gap: .45rem; font-size: .75rem; opacity: .8; }
+
+input {
+  width: min(26rem, 70vw);
+  padding: .8rem;
+  border: 1px solid #373d44;
+  background: #111418;
+  color: inherit;
+  font: inherit;
+}
+
+.findings { display: grid; gap: .75rem; margin-top: 2rem; }
+
+.finding {
+  display: grid;
+  grid-template-columns: 8rem 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+  border: 1px solid #272c31;
+}
+
+.finding p { margin: .35rem 0 0; opacity: .68; }
+.tag { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+
+@media (max-width: 720px) {
+  .shell { padding: 3rem 0; }
+  .toolbar { display: grid; }
+  .metrics { grid-template-columns: 1fr; }
+  .finding { grid-template-columns: 1fr; }
+  input { width: 100%; }
+}
