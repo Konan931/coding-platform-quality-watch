@@ -1,0 +1,17 @@
+{
+  "name": "coding-platform-quality-watch",
+  "version": "0.2.0-foundation",
+  "private": true,
+  "type": "module",
+  "description": "Evidence-driven quality observatory for coding learning platforms.",
+  "scripts": {
+    "validate": "node scripts/validate-reports.mjs",
+    "test": "npm run validate",
+    "build": "node scripts/build-web.mjs",
+    "serve": "npm run build && python3 -m http.server 8080 -d dist"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Coding Platform Quality Watch — evidence-driven coding education quality observatory.">
+  <title>Coding Platform Quality Watch</title>
+  <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <p class="eyebrow">Digital Welfare Productions™ Unltd.</p>
+      <h1>Coding Platform Quality Watch</h1>
+      <p class="lede">Evidence over vibes. Reproduction over outrage.</p>
+      <p class="mission">This is not a platform war. This is a quality map.</p>
+    </header>
+
+    <section class="panel" aria-labelledby="status-title">
+      <div>
+        <p class="eyebrow">Foundation status</p>
+        <h2 id="status-title">Observable, reproducible, revisable.</h2>
+      </div>
+      <dl class="metrics">
+        <div><dt>Reports</dt><dd id="report-count">—</dd></div>
+        <div><dt>Verified</dt><dd id="verified-count">—</dd></div>
+        <div><dt>Platforms</dt><dd id="platform-count">—</dd></div>
+      </dl>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <div>
+          <p class="eyebrow">Normalized evidence</p>
+          <h2>Findings</h2>
+        </div>
+        <label>
+          Filter
+          <input id="filter" type="search" placeholder="platform, category, title…">
+        </label>
+      </div>
+      <div id="findings" class="findings" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script type="module" src="./scripts/main.js"></script>
+</body>
+</html>

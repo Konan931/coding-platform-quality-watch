@@ -1,0 +1,41 @@
+name: Quality Watch CI
+
+on:
+  push:
+    branches: ["main", "dwp/**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Validate reports
+        run: npm test
+
+      - name: Build static site
+        run: npm run build
+
+      - name: Verify deploy artifacts
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f dist/index.html
+          test -f dist/data/reports.json
+          test -f dist/scripts/main.js
+          test -f dist/styles/main.css
+          test -f dist/playground/index.html
+          test -f dist/playground/app.js
+          test -f dist/playground/styles.css
+          test -f dist/playground/standalone.html
+          node -e 'const fs=require("fs"); const x=JSON.parse(fs.readFileSync("dist/data/reports.json","utf8")); if(!Array.isArray(x)) process.exit(1); console.log("reports:", x.length)'

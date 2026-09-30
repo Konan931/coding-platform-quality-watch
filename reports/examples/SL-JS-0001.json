@@ -1,0 +1,40 @@
+{
+  "id": "SL-JS-0001",
+  "platform": "SoloLearn",
+  "category": "autograder",
+  "language": "JavaScript",
+  "title": "Example report demonstrating the foundation data contract",
+  "observation": {
+    "expected": "A documented reference result can be compared with the platform result.",
+    "actual": "This fixture is intentionally non-accusatory and exists only to exercise the report pipeline."
+  },
+  "environment": {
+    "capturedAt": "2026-09-30T00:00:00Z",
+    "runtime": "fixture",
+    "browser": null,
+    "os": null,
+    "device": null,
+    "locale": "en"
+  },
+  "reproduction": {
+    "steps": [
+      "Load the fixture report.",
+      "Run npm test.",
+      "Confirm that the report passes structural validation."
+    ],
+    "snippet": null
+  },
+  "evidence": [
+    {
+      "type": "manual-observation",
+      "description": "Foundation fixture; not a claim about a live platform defect.",
+      "path": null,
+      "url": null
+    }
+  ],
+  "confidence": "unverified",
+  "status": "open",
+  "firstSeen": "2026-09-30",
+  "lastVerified": "2026-09-30",
+  "notes": "Replace or complement this fixture with verified reports as the corpus grows."
+}
