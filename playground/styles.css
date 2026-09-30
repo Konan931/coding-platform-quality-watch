@@ -1,0 +1,29 @@
+:root {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  color-scheme: dark;
+  background: #0b0d0f;
+  color: #e8eaed;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #0b0d0f; }
+.shell { width: min(980px, calc(100% - 2rem)); margin: 0 auto; padding: 3rem 0; }
+h1 { font-size: clamp(2rem, 7vw, 4.5rem); line-height: .95; margin: .4rem 0 1rem; }
+h2 { margin: 0 0 1rem; }
+.eyebrow { text-transform: uppercase; letter-spacing: .12em; opacity: .62; font-size: .75rem; }
+.panel { border-top: 1px solid #343a40; padding: 1.5rem 0 2rem; }
+.runtime { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .75rem; }
+.runtime div, .finding { border: 1px solid #2a3036; padding: .9rem; }
+dt { opacity: .6; font-size: .72rem; text-transform: uppercase; }
+dd { margin: .3rem 0 0; }
+.toolbar { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+input { width: min(26rem, 55vw); padding: .75rem; font: inherit; color: inherit; background: #111418; border: 1px solid #373d44; }
+.findings { display: grid; gap: .75rem; margin-top: 1.25rem; }
+.finding { display: grid; grid-template-columns: 8rem 1fr auto; gap: 1rem; }
+.finding p { margin: .35rem 0 0; opacity: .7; }
+.tag { text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; }
+a { color: inherit; }
+@media (max-width: 680px) {
+  .runtime, .finding { grid-template-columns: 1fr; }
+  .toolbar { display: grid; }
+  input { width: 100%; }
+}
