@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Quality Watch Playground — Standalone</title>
+  <style>
+    :root{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color-scheme:dark;background:#0b0d0f;color:#e8eaed}
+    *{box-sizing:border-box}body{margin:0}.shell{width:min(960px,calc(100% - 2rem));margin:auto;padding:3rem 0}
+    h1{font-size:clamp(2rem,7vw,4rem);line-height:.95}.eyebrow,.tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;opacity:.72}
+    .panel{border-top:1px solid #343a40;padding:1.5rem 0}.runtime,.findings{display:grid;gap:.75rem}.runtime{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .runtime div,.finding{border:1px solid #2a3036;padding:.9rem}.finding{display:grid;grid-template-columns:8rem 1fr auto;gap:1rem}
+    dt{opacity:.6;font-size:.72rem;text-transform:uppercase}dd{margin:.3rem 0 0}.finding p{margin:.35rem 0 0;opacity:.7}
+    @media(max-width:680px){.runtime,.finding{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main class="shell">
+  <p class="eyebrow">DWP™ // one-file fallback</p>
+  <h1>Quality Watch Playground</h1>
+  <p>No modules. No packages. No CDN. External JSON is optional.</p>
+  <section class="panel"><h2>Runtime</h2><dl id="runtime" class="runtime"></dl></section>
+  <section class="panel"><h2>Findings</h2><div id="findings" class="findings"></div></section>
+</main>
+<script>
+(function () {
+  var embeddedReports = [{
+    id:"PG-JS-0001",
+    platform:"Playground",
+    category:"runtime",
+    title:"Standalone embedded fallback fixture",
+    confidence:"reproduced",
+    status:"monitoring",
+    lastVerified:"2026-09-30"
+  }];
+
+  var runtime = document.getElementById("runtime");
+  var findings = document.getElementById("findings");
+
+  function runtimeItem(label, value) {
+    var row=document.createElement("div"), dt=document.createElement("dt"), dd=document.createElement("dd");
+    dt.textContent=label; dd.textContent=value; row.appendChild(dt); row.appendChild(dd); runtime.appendChild(row);
+  }
+
+  function render(items) {
+    findings.textContent="";
+    items.forEach(function(report){
+      var article=document.createElement("article"), category=document.createElement("span"), body=document.createElement("div");
+      var title=document.createElement("strong"), meta=document.createElement("p"), state=document.createElement("span");
+      article.className="finding"; category.className="tag"; state.className="tag";
+      category.textContent=report.category||"unknown"; title.textContent=report.title||report.id||"Untitled finding";
+      meta.textContent=(report.platform||"unknown")+" · "+(report.id||"no-id")+" · "+(report.lastVerified||"unverified");
+      state.textContent=(report.confidence||"unknown")+" / "+(report.status||"unknown");
+      body.appendChild(title); body.appendChild(meta); article.appendChild(category); article.appendChild(body); article.appendChild(state); findings.appendChild(article);
+    });
+  }
+
+  function finish(items, source) {
+    runtimeItem("Protocol", location.protocol||"unknown");
+    runtimeItem("Fetch", typeof fetch==="function"?"available":"unavailable");
+    runtimeItem("Modules", "not required");
+    runtimeItem("Data source", source);
+    runtimeItem("Reports", String(items.length));
+    runtimeItem("Mode", "STANDALONE");
+    render(items);
+  }
+
+  if (location.protocol==="file:" || typeof fetch!=="function") {
+    finish(embeddedReports, "embedded fallback");
+    return;
+  }
+
+  fetch("../data/reports.json", {cache:"no-store"})
+    .then(function(response){ if(!response.ok) throw new Error("HTTP "+response.status); return response.json(); })
+    .then(function(data){ if(!Array.isArray(data)) throw new Error("report bundle is not an array"); finish(data, "generated HTTP bundle"); })
+    .catch(function(error){ console.warn("Quality Watch standalone fallback:", error); finish(embeddedReports, "embedded fallback ("+error.message+")"); });
+})();
+</script>
+</body>
+</html>
